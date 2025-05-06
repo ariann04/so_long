@@ -6,13 +6,13 @@
 /*   By: ls <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 20:10:07 by ls                #+#    #+#             */
-/*   Updated: 2024/06/18 06:16:16 by tblagoev         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:11:37 by tblagoev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen_gnl(char *str)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr_gnl(char *s, int c)
 {
 	size_t	i;
 
@@ -60,7 +60,7 @@ int	jumplen(char *storage)
 	return (-1);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;
@@ -73,7 +73,7 @@ char	*ft_strjoin(char *s1, char *s2)
 			return (0);
 		s1[0] = 0;
 	}
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!str)
 		return (free(s1), NULL);
 	i = -1;
@@ -87,7 +87,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_substr(char *storage, unsigned int start, size_t len)
+char	*ft_substr_gnl(char *storage, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
@@ -95,7 +95,7 @@ char	*ft_substr(char *storage, unsigned int start, size_t len)
 	i = 0;
 	if (!storage)
 		return (0);
-	if (start > ft_strlen(storage))
+	if (start > ft_strlen_gnl(storage))
 	{
 		str = malloc(sizeof(char) * (1));
 		if (!str)
@@ -103,12 +103,12 @@ char	*ft_substr(char *storage, unsigned int start, size_t len)
 		str[0] = '\0';
 		return (str);
 	}
-	if (ft_strlen(storage) - start < len)
-		len = ft_strlen(storage) - start;
+	if (ft_strlen_gnl(storage) - start < len)
+		len = ft_strlen_gnl(storage) - start;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	while (start < ft_strlen(storage) && i < len && storage[start])
+	while (start < ft_strlen_gnl(storage) && i < len && storage[start])
 		str[i++] = storage[start++];
 	str[i] = '\0';
 	return (str);

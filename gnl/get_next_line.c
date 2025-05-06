@@ -6,7 +6,7 @@
 /*   By: ls <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 19:33:02 by ls                #+#    #+#             */
-/*   Updated: 2024/09/19 00:22:44 by tblagoev         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:07:36 by tblagoev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*cut_storage(char *storage)
 		storage = NULL;
 		return (NULL);
 	}
-	remind = ft_substr(storage, len + 1, (ft_strlen(storage) - len));
+	remind = ft_substr_gnl(storage, len + 1, (ft_strlen_gnl(storage) - len));
 	free(storage);
 	storage = NULL;
 	return (remind);
@@ -38,7 +38,7 @@ char	*new_line(char *storage)
 	len = jumplen(storage);
 	if (len == -1)
 		return (NULL);
-	line = ft_substr(storage, 0, len + 1);
+	line = ft_substr_gnl(storage, 0, len + 1);
 	if (!line)
 		return (NULL);
 	return (line);
@@ -54,13 +54,13 @@ char	*readbuf(int fd, char *storage)
 	if (!buffer)
 		return (free(storage), storage = NULL, NULL);
 	buffer[0] = '\0';
-	while (status > 0 && !ft_strchr(buffer, '\n'))
+	while (status > 0 && !ft_strchr_gnl(buffer, '\n'))
 	{
 		status = read(fd, buffer, BUFFER_SIZE);
 		if (status > 0)
 		{
 			buffer[status] = '\0';
-			storage = ft_strjoin(storage, buffer);
+			storage = ft_strjoin_gnl(storage, buffer);
 		}
 	}
 	free(buffer);
@@ -76,7 +76,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if ((storage && !ft_strchr(storage, '\n')) || !storage)
+	if ((storage && !ft_strchr_gnl(storage, '\n')) || !storage)
 	{
 		storage = readbuf(fd, storage);
 	}

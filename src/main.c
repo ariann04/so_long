@@ -6,7 +6,7 @@
 /*   By: tblagoev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:02:45 by tblagoev          #+#    #+#             */
-/*   Updated: 2025/05/03 17:42:07 by tblagoev         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:27:16 by tblagoev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	main(int argc, char **argv)
 		ft_printf("Error loading map\n");
 		return (1);
 	}
+	check_rectangle(&game);
+	check_walls_rows(&game);
+	check_walls_col(&game);
 	print_map(game.map);
 	return (0);
 }

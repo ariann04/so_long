@@ -6,7 +6,7 @@
 /*   By: tblagoev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 16:16:37 by tblagoev          #+#    #+#             */
-/*   Updated: 2025/05/03 17:45:31 by tblagoev         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:37:51 by tblagoev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "libft.h"
 
 typedef struct	s_game
 {
@@ -32,4 +33,8 @@ typedef struct	s_game
 void	print_map(char **map);
 char	**load_map(char	*filename, int height);
 int	count_lines(char *filename);
+void	check_rectangle(t_game *game);
+void	free_map(char **map);
+void	check_walls_rows(t_game *game);
+void	check_walls_col(t_game *game);
 #endif

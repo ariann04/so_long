@@ -47,6 +47,10 @@ char	**load_map(char	*filename, int height)
 	while (i < height)
 	{
 		map[i] = get_next_line(fd);
+		if (!map[i])
+			break;
+		if (map[i][ft_strlen(map[i]) - 1] == '\n')
+			map[i][ft_strlen(map[i]) - 1] = '\0'; // limpiar salto de línea
 		i++;
 	}
 	map[i] = NULL;
@@ -61,7 +65,7 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 	{
-		ft_printf("%s", map[i]);
+		ft_printf("%s\n", map[i]);
 		i++;
 	}
 }
