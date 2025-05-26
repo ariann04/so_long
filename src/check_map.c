@@ -68,51 +68,44 @@ void	check_walls_col(t_game *game)
 		i++;
 	}
 }
-void	count_elements(t_game *game)
+
+static void	count_elements_line(char *line, int *player, int *exit, *int collectibles)
+{
+	int	j;
+
+	j = 0;
+	while (line[j])
+	{
+		if (line[j] == 'P')
+			(*player)++;
+		if(line[j] == 'E')
+			(*exit)++;
+		if (line[j] == 'C')
+			(*collectibles)++;
+		j++;
+	}
+}
+
+void	check_elements(t_game *game)
 {
 	int	i;
-	int	j;
 	int	player;
 	int	exit;
 	int	collectibles;
 
-	i = 0;
-	j = 0;
 	player = 0;
 	exit = 0;
 	collectibles = 0;
+	i = 0;
 	while (game->map[i])
 	{
-		if (game->map[i][j] == 'P')
-			player++;
-		if (game->map[i][j] == 'E')
-			exit++;
-		if (game->map[i][j] == 'C')
-			collectibles++;
-		j++;
+		count_elements_line(game->map[i], &player, &exit, &collectibles);
+		i++;
 	}
-	i++;
-}
-	void	check_elements(t_game *game)
+	if (player != 1 || exit != 1 || collectibles == 0)
 	{
-		int	i;
-		int	player;
-		int	exit;
-		int	collectibles;
-
-		player = 0;
-		exit = 0;
-		collectibles = 0;
-		i = 0;
-		while (game->map[i])
-		{
-			count_elements(game->map)
-			i++;
-		}
-		if (player > 1 || exit > 1 || collectibles == 0)
-		{
-			write(1, "Error\n", 6);
-			free_map(game->map);
-			exit(1);
-		}
+		write(1, "Error\n", 6);
+		free_map(game->map);
+		exit(1);
+	}
 }

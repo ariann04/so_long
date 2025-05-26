@@ -38,6 +38,8 @@ int	main(int argc, char **argv)
 	check_rectangle(&game);
 	check_walls_rows(&game);
 	check_walls_col(&game);
+	check_elements(&game);
+	check_path(&game);
 	print_map(game.map);
 	return (0);
 }
