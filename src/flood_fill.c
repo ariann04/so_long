@@ -1,3 +1,5 @@
+#include "so_long.h"
+
 char	**copy_map(char **original, int height)
 {
 	char	**copy;
@@ -48,13 +50,13 @@ void	find_player_position(char **map, int *x, int *y)
 
 void	flood_fill(char **map, int x, int y)
 {
-	if (map[y][x] == 1 || map[y][x] == 'F')
+	if (map[y][x] == '1' || map[y][x] == 'F')
 		return ;
 	if (map[y][x] == 'E' || map[y][x] == 'C' || map[y][x] == '0'
 			|| map[y][x] == 'P')
 		map[y][x] = 'F';
 	flood_fill(map, x + 1, y);
-	floof_fill(map, x - 1, y);
+	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
 	flood_fill(map, x, y - 1);
 }
@@ -77,28 +79,6 @@ int	map_is_solvable(char **map)
 		i++;
 	}
 	return (1);
-}
-
-void	check_path(t_game *game)
-{
-	char	**map_copy;
-	int		x, y;
-
-	map_copy = copy_map(game->map, game->height);
-	if (!map_copy)
-	{
-		write(1, "Error\n", 6);
-		exit(1);
-	}
-	find_player_position(map_copy, &x, &y);
-	flood_fill(map_copy, x, y);
-	if (!map_is_solvable(map_copy))
-	{
-		free_map(map_copy);
-		write(1, "Error\n", 6);
-		exit(1);
-	}
-	free_map(map_copy);
 }
 
 void	check_path(t_game *game)

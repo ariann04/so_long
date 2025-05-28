@@ -69,7 +69,7 @@ void	check_walls_col(t_game *game)
 	}
 }
 
-static void	count_elements_line(char *line, int *player, int *exit, *int collectibles)
+static void	count_elements_line(char *line, int *player, int *exit, int *collectibles)
 {
 	int	j;
 
@@ -90,19 +90,19 @@ void	check_elements(t_game *game)
 {
 	int	i;
 	int	player;
-	int	exit;
+	int	exits;
 	int	collectibles;
 
 	player = 0;
-	exit = 0;
+	exits = 0;
 	collectibles = 0;
 	i = 0;
 	while (game->map[i])
 	{
-		count_elements_line(game->map[i], &player, &exit, &collectibles);
+		count_elements_line(game->map[i], &player, &exits, &collectibles);
 		i++;
 	}
-	if (player != 1 || exit != 1 || collectibles == 0)
+	if (player != 1 || exits != 1 || collectibles == 0)
 	{
 		write(1, "Error\n", 6);
 		free_map(game->map);

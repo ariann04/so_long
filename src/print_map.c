@@ -40,7 +40,7 @@ char	**load_map(char	*filename, int height)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	map = malloc(sizeof(char *) * height + 1);
+	map = malloc(sizeof(char *) * (height + 1));
 	if (!map)
 		return (NULL);
 	i = 0;

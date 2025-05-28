@@ -2,7 +2,7 @@ NAME = so_long
 
 SRC = src/main.c gnl/get_next_line.c gnl/get_next_line_utils.c \
       ft_printf/ft_printf.c ft_printf/ft_handle_chars.c ft_printf/ft_handle_digits.c src/print_map.c \
-      src/check_map.c src/cleaner.c \
+      src/check_map.c src/cleaner.c src/flood_fill.c src/movements.c \
       $(wildcard libft/*.c)
 OBJ = $(SRC:.c=.o)
 

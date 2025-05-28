@@ -40,6 +40,8 @@ int	main(int argc, char **argv)
 	check_walls_col(&game);
 	check_elements(&game);
 	check_path(&game);
+	init_player_position(&game);
 	print_map(game.map);
+	test_movements(&game);
 	return (0);
 }
