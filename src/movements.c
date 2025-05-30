@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tblagoev <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/30 20:36:26 by tblagoev          #+#    #+#             */
+/*   Updated: 2025/05/30 21:20:50 by tblagoev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	init_player_position(t_game *game)
@@ -38,7 +50,11 @@ void	move_player(t_game *game, int dx, int dy)
 	if (target == '1')
 		return ;
 	if (target == 'E')
+	{
 		ft_printf("You have reached the exit\n");
+		mlx_close_window(game->mlx);
+		return ;
+	}
 	game->map[game->player_y][game->player_x] = '0';
 	game->map[new_y][new_x] = 'P';
 	game->player_y = new_y;
